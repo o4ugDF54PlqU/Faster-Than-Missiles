@@ -6,7 +6,13 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-    private bool thrusting = false;
+    public bool thrusting = false;
+    public float rotationSpeed = 180f;
+    public float drag = 1;
+    public float angularDrag = 100;
+    public float thrustForce = 1000;
+    public float maxVelocity = 10;
+    public float maxAngularVelocity = 10;
     private bool turningLeft = false;
     private bool turningRight = false;
     private Rigidbody2D playerRigidbody;
@@ -15,18 +21,15 @@ public class Movement : MonoBehaviour
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
+        playerRigidbody.drag = drag;
+        playerRigidbody.angularDrag = angularDrag;
     }
 
     void Update()
     {
-        message = "Player Pos: " + this.transform.position;
-    }
-
-    void FixedUpdate()
-    {
         if (thrusting)
         {
-            playerRigidbody.AddForce(transform.up* 500f * Time.deltaTime);
+            playerRigidbody.AddForce(transform.up * thrustForce * Time.deltaTime);
         }
         else
         {
@@ -35,11 +38,26 @@ public class Movement : MonoBehaviour
 
         if (turningLeft)
         {
-            transform.Rotate(Vector3.forward * 120f * Time.deltaTime);
+            playerRigidbody.AddTorque(rotationSpeed * Time.deltaTime);
         }
         if (turningRight)
         {
-            transform.Rotate(Vector3.back * 120f * Time.deltaTime);
+            playerRigidbody.AddTorque(-rotationSpeed * Time.deltaTime);
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (playerRigidbody.velocity.magnitude > maxVelocity)
+        {
+            playerRigidbody.velocity = playerRigidbody.velocity.normalized * maxVelocity;
+        }
+        if (Mathf.Abs(playerRigidbody.angularVelocity) > maxAngularVelocity)
+        {
+            if (playerRigidbody.angularVelocity > 0)
+            playerRigidbody.angularVelocity = maxAngularVelocity;
+            else
+            playerRigidbody.angularVelocity = -maxAngularVelocity;
         }
     }
 
@@ -47,11 +65,12 @@ public class Movement : MonoBehaviour
     {
         if (context.action.IsPressed())
         {
-            //Debug.Log("Thrusting");
+            playerRigidbody.drag = 0.3f;
             thrusting = true;
         }
         else
         {
+            playerRigidbody.drag = drag;
             thrusting = false;
         }
     }
@@ -60,11 +79,12 @@ public class Movement : MonoBehaviour
     {
         if (context.action.IsPressed())
         {
-            //Debug.Log("turning left");
+            playerRigidbody.angularDrag = 0.01f;
             turningLeft = true;
         }
         else
         {
+            playerRigidbody.angularDrag = angularDrag;
             turningLeft = false;
         }
     }
@@ -73,11 +93,12 @@ public class Movement : MonoBehaviour
     {
         if (context.action.IsPressed())
         {
-            //Debug.Log("turning right");
+            playerRigidbody.angularDrag = 0.01f;
             turningRight = true;
         }
         else
         {
+            playerRigidbody.angularDrag = angularDrag;
             turningRight = false;
         }
     }
