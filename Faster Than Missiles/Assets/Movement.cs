@@ -29,11 +29,11 @@ public class Movement : MonoBehaviour
 
         if (turningLeft)
         {
-            transform.Rotate(Vector3.forward * 40f * Time.deltaTime);
+            transform.Rotate(Vector3.forward * 120f * Time.deltaTime);
         }
         if (turningRight)
         {
-            transform.Rotate(Vector3.back * 40f * Time.deltaTime);
+            transform.Rotate(Vector3.back * 120f * Time.deltaTime);
         }
     }
 
