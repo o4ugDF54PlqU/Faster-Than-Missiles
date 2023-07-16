@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +15,11 @@ public class Movement : MonoBehaviour
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
+        message = "Player Pos: " + this.transform.position;
     }
 
     void FixedUpdate()
@@ -41,7 +47,7 @@ public class Movement : MonoBehaviour
     {
         if (context.action.IsPressed())
         {
-            Debug.Log("Thrusting");
+            //Debug.Log("Thrusting");
             thrusting = true;
         }
         else
@@ -54,7 +60,7 @@ public class Movement : MonoBehaviour
     {
         if (context.action.IsPressed())
         {
-            Debug.Log("turning left");
+            //Debug.Log("turning left");
             turningLeft = true;
         }
         else
@@ -67,7 +73,7 @@ public class Movement : MonoBehaviour
     {
         if (context.action.IsPressed())
         {
-            Debug.Log("turning right");
+            //Debug.Log("turning right");
             turningRight = true;
         }
         else
