@@ -5,7 +5,9 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-    private bool thrusting = false;
+    public bool thrusting = false;
+    public SpriteRenderer exhaustSprite;
+    public float rotationSpeed = 180f;
     private bool turningLeft = false;
     private bool turningRight = false;
     private Rigidbody2D playerRigidbody;
@@ -16,7 +18,7 @@ public class Movement : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody2D>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (thrusting)
         {
@@ -29,11 +31,11 @@ public class Movement : MonoBehaviour
 
         if (turningLeft)
         {
-            transform.Rotate(Vector3.forward * 120f * Time.deltaTime);
+            playerRigidbody.AddTorque(rotationSpeed * Time.deltaTime);
         }
         if (turningRight)
         {
-            transform.Rotate(Vector3.back * 120f * Time.deltaTime);
+            playerRigidbody.AddTorque(-rotationSpeed * Time.deltaTime);
         }
     }
 
@@ -41,12 +43,13 @@ public class Movement : MonoBehaviour
     {
         if (context.action.IsPressed())
         {
-            Debug.Log("Thrusting");
             thrusting = true;
+            exhaustSprite.enabled = true;
         }
         else
         {
             thrusting = false;
+            exhaustSprite.enabled = false;
         }
     }
 
@@ -54,7 +57,6 @@ public class Movement : MonoBehaviour
     {
         if (context.action.IsPressed())
         {
-            Debug.Log("turning left");
             turningLeft = true;
         }
         else
@@ -67,7 +69,6 @@ public class Movement : MonoBehaviour
     {
         if (context.action.IsPressed())
         {
-            Debug.Log("turning right");
             turningRight = true;
         }
         else
