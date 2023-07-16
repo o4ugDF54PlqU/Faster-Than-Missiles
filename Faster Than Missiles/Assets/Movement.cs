@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
     public bool thrusting = false;
-    public SpriteRenderer exhaustSprite;
     public float rotationSpeed = 180f;
     public float drag = 1;
     public float angularDrag = 100;
@@ -67,13 +66,11 @@ public class Movement : MonoBehaviour
         {
             playerRigidbody.drag = 0.3f;
             thrusting = true;
-            exhaustSprite.enabled = true;
         }
         else
         {
             playerRigidbody.drag = drag;
             thrusting = false;
-            exhaustSprite.enabled = false;
         }
     }
 
