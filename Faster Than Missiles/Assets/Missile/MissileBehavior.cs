@@ -14,7 +14,6 @@ public class MissileBehavior : MonoBehaviour
     [Header("Missile Movement Variables")]
     [SerializeField] private float thrustForce = 1000;
     [SerializeField] private float maxVelocity = 10;
-    [SerializeField] private float maxAngularVelocity = 10;
     [SerializeField] private float passiveDrag = 1;
     [SerializeField] private float activeDrag = 0.3f;
     [SerializeField] private float passiveAngularDrag = 100;
@@ -34,15 +33,20 @@ public class MissileBehavior : MonoBehaviour
     void Update()
     {
         playerPos = player.transform.position;
+        // Debug.Log(playerPos);
 
         if (fuelTime > 0)
         {
             missileRigidBody.AddForce(transform.up * thrustForce * Time.deltaTime);
 
-            toRotation = Quaternion.FromToRotation(transform.up, playerPos);
-            transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 1f);
+            Vector2 direction = playerPos - transform.position;
+            float angle = Vector2.SignedAngle(Vector2.up, direction);
+            Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            Debug.Log(angle);
+            missileRigidBody.MoveRotation(Quaternion.RotateTowards(
+                transform.rotation, targetRotation, rotationSpeed * Time.deltaTime));
 
-            fuelTime -= 1f * Time.deltaTime;
+            // fuelTime -= 1f * Time.deltaTime;
         }
     }
 
@@ -51,24 +55,24 @@ public class MissileBehavior : MonoBehaviour
         if (missileRigidBody.velocity.magnitude > maxVelocity)
             missileRigidBody.velocity = missileRigidBody.velocity.normalized * maxVelocity;
 
-        if (Mathf.Abs(missileRigidBody.angularVelocity) > maxAngularVelocity)
-        {
-            if (missileRigidBody.angularVelocity > 0)
-                missileRigidBody.angularVelocity = maxAngularVelocity;
-            else
-                missileRigidBody.angularVelocity = -maxAngularVelocity;
-        }
+        // if (Mathf.Abs(missileRigidBody.angularVelocity) > maxAngularVelocity)
+        // {
+        //     if (missileRigidBody.angularVelocity > 0)
+        //         missileRigidBody.angularVelocity = maxAngularVelocity;
+        //     else
+        //         missileRigidBody.angularVelocity = -maxAngularVelocity;
+        // }
 
-        if (fuelTime > 0)
-        {
-            missileRigidBody.drag = activeDrag;
-            missileRigidBody.angularDrag = activeAngularDrag;
-        }
-        else
-        {
-            missileRigidBody.drag = passiveDrag;
-            missileRigidBody.angularDrag = passiveAngularDrag;
-        }
+        // if (fuelTime > 0)
+        // {
+        //     missileRigidBody.drag = activeDrag;
+        //     missileRigidBody.angularDrag = activeAngularDrag;
+        // }
+        // else
+        // {
+        //     missileRigidBody.drag = passiveDrag;
+        //     missileRigidBody.angularDrag = passiveAngularDrag;
+        // }
 
     }
 }
