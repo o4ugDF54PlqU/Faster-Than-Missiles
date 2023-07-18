@@ -126,12 +126,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 953097868125957947, guid: 63f16039dd533f54c95b9a5dc511ff71, type: 3}
+  initialThrust: 300
   thrustForce: 1000
   maxVelocity: 20
-  maxAngularVelocity: 10
   passiveDrag: 1
   activeDrag: 0.3
   passiveAngularDrag: 100
   activeAngularDrag: 0.01
-  fuelTime: 0
-  rotationSpeed: 2000
+  fuelTime: 1.5
+  rotationSpeed: 2200

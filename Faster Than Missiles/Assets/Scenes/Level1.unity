@@ -637,7 +637,7 @@ PrefabInstance:
       objectReference: {fileID: 1293299873}
     - target: {fileID: 7342640056455497842, guid: be8f4b2dbd15c11419e65b8ba8d8024b, type: 3}
       propertyPath: fuelTime
-      value: 100
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7342640056455497842, guid: be8f4b2dbd15c11419e65b8ba8d8024b, type: 3}
       propertyPath: maxVelocity
@@ -648,8 +648,12 @@ PrefabInstance:
       value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 7342640056455497842, guid: be8f4b2dbd15c11419e65b8ba8d8024b, type: 3}
+      propertyPath: initialThrust
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342640056455497842, guid: be8f4b2dbd15c11419e65b8ba8d8024b, type: 3}
       propertyPath: rotationSpeed
-      value: 2000
+      value: 2200
       objectReference: {fileID: 0}
     - target: {fileID: 7342640056455497842, guid: be8f4b2dbd15c11419e65b8ba8d8024b, type: 3}
       propertyPath: maxAngularVelocity
@@ -829,11 +833,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 587809059731601175, guid: be8f4b2dbd15c11419e65b8ba8d8024b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.19
+      value: -5.94
       objectReference: {fileID: 0}
     - target: {fileID: 587809059731601175, guid: be8f4b2dbd15c11419e65b8ba8d8024b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.57
+      value: -4.43
       objectReference: {fileID: 0}
     - target: {fileID: 587809059731601175, guid: be8f4b2dbd15c11419e65b8ba8d8024b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -841,7 +845,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 587809059731601175, guid: be8f4b2dbd15c11419e65b8ba8d8024b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 587809059731601175, guid: be8f4b2dbd15c11419e65b8ba8d8024b, type: 3}
       propertyPath: m_LocalRotation.x
@@ -853,7 +857,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 587809059731601175, guid: be8f4b2dbd15c11419e65b8ba8d8024b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 587809059731601175, guid: be8f4b2dbd15c11419e65b8ba8d8024b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -865,15 +869,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 587809059731601175, guid: be8f4b2dbd15c11419e65b8ba8d8024b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 1643418809009752096, guid: be8f4b2dbd15c11419e65b8ba8d8024b, type: 3}
       propertyPath: m_Name
       value: Missile (1)
       objectReference: {fileID: 0}
     - target: {fileID: 7342640056455497842, guid: be8f4b2dbd15c11419e65b8ba8d8024b, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1293299873}
+    - target: {fileID: 7342640056455497842, guid: be8f4b2dbd15c11419e65b8ba8d8024b, type: 3}
       propertyPath: fuelTime
-      value: 1000
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7342640056455497842, guid: be8f4b2dbd15c11419e65b8ba8d8024b, type: 3}
       propertyPath: maxVelocity
@@ -884,8 +892,12 @@ PrefabInstance:
       value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 7342640056455497842, guid: be8f4b2dbd15c11419e65b8ba8d8024b, type: 3}
+      propertyPath: initialThrust
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342640056455497842, guid: be8f4b2dbd15c11419e65b8ba8d8024b, type: 3}
       propertyPath: rotationSpeed
-      value: 2000
+      value: 2200
       objectReference: {fileID: 0}
     - target: {fileID: 7342640056455497842, guid: be8f4b2dbd15c11419e65b8ba8d8024b, type: 3}
       propertyPath: maxAngularVelocity
@@ -907,6 +919,18 @@ PrefabInstance:
     - target: {fileID: 953097868125957947, guid: 63f16039dd533f54c95b9a5dc511ff71, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839857874664499405, guid: 63f16039dd533f54c95b9a5dc511ff71, type: 3}
+      propertyPath: drag
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839857874664499405, guid: 63f16039dd533f54c95b9a5dc511ff71, type: 3}
+      propertyPath: rotationSpeed
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839857874664499405, guid: 63f16039dd533f54c95b9a5dc511ff71, type: 3}
+      propertyPath: maxAngularVelocity
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 5994615911221650044, guid: 63f16039dd533f54c95b9a5dc511ff71, type: 3}
       propertyPath: m_RootOrder

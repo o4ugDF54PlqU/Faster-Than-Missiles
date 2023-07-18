@@ -12,6 +12,7 @@ public class MissileBehavior : MonoBehaviour
 
     private Rigidbody2D missileRigidBody;
     [Header("Missile Movement Variables")]
+    [SerializeField] private float initialThrust = 1000f;
     [SerializeField] private float thrustForce = 1000;
     [SerializeField] private float maxVelocity = 10;
     [SerializeField] private float passiveDrag = 1;
@@ -25,6 +26,7 @@ public class MissileBehavior : MonoBehaviour
     void Start()
     {
         missileRigidBody = GetComponent<Rigidbody2D>();
+        missileRigidBody.AddForce(transform.up * initialThrust);
 
         missileRigidBody.drag = passiveDrag;
         missileRigidBody.angularDrag = passiveAngularDrag;
@@ -32,22 +34,21 @@ public class MissileBehavior : MonoBehaviour
 
     void Update()
     {
-        playerPos = player.transform.position;
-        // Debug.Log(playerPos);
+        fuelTime -= 1f * Time.deltaTime;
 
-        if (fuelTime > 0)
+        if (fuelTime >= 0)
         {
-            missileRigidBody.AddForce(transform.up * thrustForce * Time.deltaTime);
-
-            Vector2 direction = playerPos - transform.position;
-            float angle = Vector2.SignedAngle(Vector2.up, direction);
-            Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
-            Debug.Log(angle);
-            missileRigidBody.MoveRotation(Quaternion.RotateTowards(
-                transform.rotation, targetRotation, rotationSpeed * Time.deltaTime));
-
-            // fuelTime -= 1f * Time.deltaTime;
+            return;
         }
+        playerPos = player.transform.position;
+        var thrust = Random.Range(thrustForce * 0.5f, thrustForce * 1.5f);
+        missileRigidBody.AddForce(transform.up * thrust * Time.deltaTime);
+
+        Vector2 direction = playerPos - transform.position;
+        float angle = Vector2.SignedAngle(Vector2.up, direction);
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        missileRigidBody.MoveRotation(Quaternion.RotateTowards(
+            transform.rotation, targetRotation, rotationSpeed * Time.deltaTime));
     }
 
     void FixedUpdate()
