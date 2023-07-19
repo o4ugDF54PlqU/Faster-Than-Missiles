@@ -31,10 +31,6 @@ public class Movement : MonoBehaviour
         {
             playerRigidbody.AddForce(transform.up * thrustForce * Time.deltaTime);
         }
-        else
-        {
-            
-        }
 
         if (turningLeft)
         {
@@ -55,9 +51,9 @@ public class Movement : MonoBehaviour
         if (Mathf.Abs(playerRigidbody.angularVelocity) > maxAngularVelocity)
         {
             if (playerRigidbody.angularVelocity > 0)
-            playerRigidbody.angularVelocity = maxAngularVelocity;
+                playerRigidbody.angularVelocity = maxAngularVelocity;
             else
-            playerRigidbody.angularVelocity = -maxAngularVelocity;
+                playerRigidbody.angularVelocity = -maxAngularVelocity;
         }
     }
 
