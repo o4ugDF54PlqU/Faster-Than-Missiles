@@ -19,7 +19,7 @@ public class MissileBehavior : MonoBehaviour
     [SerializeField] private float activeDrag = 0.3f;
     [SerializeField] private float passiveAngularDrag = 100;
     [SerializeField] private float activeAngularDrag = 0.01f;
-    [SerializeField] private float fuelTime = 999f;
+    [SerializeField] private float fuelTime = 1.5f;
     [SerializeField] private float rotationSpeed = 180f;
     private Quaternion toRotation;
 
@@ -34,10 +34,9 @@ public class MissileBehavior : MonoBehaviour
 
     void Update()
     {
-        fuelTime -= 1f * Time.deltaTime;
-
         if (fuelTime >= 0)
         {
+            fuelTime -= 1f * Time.deltaTime; 
             return;
         }
         playerPos = player.transform.position;
