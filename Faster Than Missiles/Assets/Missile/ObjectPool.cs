@@ -5,6 +5,11 @@ using UnityEngine.Pool;
 
 public class ObjectPool : MonoBehaviour
 {
+    public GameObject player;
+    private MissileBehavior tmpBehavior;
+    [Space]
+
+    [Header("Missile Pool")]
     public static ObjectPool SharedInstance;
     public List<GameObject> pooledObjects;
     public GameObject objectToPool;
@@ -24,6 +29,10 @@ public class ObjectPool : MonoBehaviour
         {
             tmp = Instantiate(objectToPool);
             tmp.SetActive(false);
+
+            MissileBehavior tmpBehavior = tmp.GetComponent<MissileBehavior>();
+            tmpBehavior.player = player;
+
             pooledObjects.Add(tmp);
         }
     }

@@ -28,31 +28,34 @@ public class LauncherBehavior : MonoBehaviour
 
     void Update()
     {
-        playerPos = player.transform.position;
-        direction = playerPos - transform.position;
-        float angle = Vector2.SignedAngle(Vector2.up, direction);
-        Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
-        launcherRigidBody.MoveRotation(Quaternion.RotateTowards(
-            transform.rotation, targetRotation, rotationSpeed * Time.deltaTime));
-
-        if (volleyDelay > 0)
-            volleyDelay -= Time.deltaTime;
-        else
+        if (player)
         {
-            volleyCount = missileCount;
-            burstDelay = burstDelayRate;
-            while (volleyCount > 0)
+            playerPos = player.transform.position;
+            direction = playerPos - transform.position;
+            float angle = Vector2.SignedAngle(Vector2.up, direction);
+            Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            launcherRigidBody.MoveRotation(Quaternion.RotateTowards(
+                transform.rotation, targetRotation, rotationSpeed * Time.deltaTime));
+
+            if (volleyDelay > 0)
+                volleyDelay -= Time.deltaTime;
+            else
             {
-                LaunchMissile();
-                if (burstDelay > 0)
-                    burstDelay -= Time.deltaTime;
-                else
+                volleyCount = missileCount;
+                burstDelay = burstDelayRate;
+                while (volleyCount > 0)
                 {
                     LaunchMissile();
-                    burstDelay = burstDelayRate;
+                    if (burstDelay > 0)
+                        burstDelay -= Time.deltaTime;
+                    else
+                    {
+                        LaunchMissile();
+                        burstDelay = burstDelayRate;
+                    }
                 }
+                volleyDelay = subsequentVolleyDelay;
             }
-            volleyDelay = subsequentVolleyDelay;
         }
     }
 
