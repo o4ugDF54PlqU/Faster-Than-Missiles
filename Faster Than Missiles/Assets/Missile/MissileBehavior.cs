@@ -22,6 +22,7 @@ public class MissileBehavior : MonoBehaviour
     [SerializeField] private float activeAngularDrag = 0.01f;
     [SerializeField] private float fuelTime = 1.5f;
     [SerializeField] private float rotationSpeed = 180f;
+    [SerializeField] private float cameraGroupWeight = 1f;
     private Quaternion toRotation;
 
     void Start()
@@ -33,7 +34,7 @@ public class MissileBehavior : MonoBehaviour
         missileRigidBody.angularDrag = passiveAngularDrag;
 
         cameraFollowGroup = FindAnyObjectByType<Cinemachine.CinemachineTargetGroup>();
-        cameraFollowGroup.AddMember(transform, 0.5f, 1f);
+        cameraFollowGroup.AddMember(transform, cameraGroupWeight, 1f);
     }
 
     void Update()
