@@ -84,6 +84,11 @@ public class MissileBehavior : MonoBehaviour
         if (collision.gameObject == player)
             Destroy(collision.gameObject);
 
+
+        if (collision.gameObject.tag == "Missile")
+        {
+            return;
+        }
         gameObject.SetActive(false);
     }
 }
