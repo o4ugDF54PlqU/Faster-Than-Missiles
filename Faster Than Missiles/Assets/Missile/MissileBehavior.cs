@@ -7,6 +7,7 @@ using UnityEngine;
 public class MissileBehavior : MonoBehaviour
 {
     public GameObject player;
+    public Cinemachine.CinemachineTargetGroup cameraFollowGroup;
     private Vector3 playerPos;
     [Space]
 
@@ -30,6 +31,9 @@ public class MissileBehavior : MonoBehaviour
 
         missileRigidBody.drag = passiveDrag;
         missileRigidBody.angularDrag = passiveAngularDrag;
+
+        cameraFollowGroup = FindAnyObjectByType<Cinemachine.CinemachineTargetGroup>();
+        cameraFollowGroup.AddMember(transform, 0.5f, 1f);
     }
 
     void Update()
@@ -82,7 +86,10 @@ public class MissileBehavior : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject == player)
+        {
+            cameraFollowGroup.RemoveMember(transform);
             Destroy(collision.gameObject);
+        }
 
 
         if (collision.gameObject.tag == "Missile")
