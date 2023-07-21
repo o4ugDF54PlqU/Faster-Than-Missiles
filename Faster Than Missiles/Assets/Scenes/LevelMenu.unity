@@ -3263,6 +3263,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5994615911221650044, guid: 63f16039dd533f54c95b9a5dc511ff71, type: 3}
   m_PrefabInstance: {fileID: 1572282375173575964}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1293299878 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4839857874664499405, guid: 63f16039dd533f54c95b9a5dc511ff71, type: 3}
+  m_PrefabInstance: {fileID: 1572282375173575964}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293299873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a355ba2a577371d49a76dadd40b04942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1345119631
 GameObject:
   m_ObjectHideFlags: 0
@@ -3273,6 +3284,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1345119633}
   - component: {fileID: 1345119632}
+  - component: {fileID: 1345119634}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: Untagged
@@ -3311,6 +3323,92 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1345119634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345119631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: dfe57ea752f12e144bdfd38b8d93a214, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1293299878}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: TurnLeft
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c21cd4e1-1f52-4aa1-a5e1-2bf28ee88b6f
+    m_ActionName: Main Map/Turn Left[/Keyboard/a,/Keyboard/leftArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1293299878}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: TurnRight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 76d47721-92f4-426e-9256-79f68fec0d18
+    m_ActionName: Main Map/Turn Right[/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9d3f0560-7d22-4de0-a3ec-8b95be82d0e9
+    m_ActionName: Main Map/Fire[/Keyboard/space,/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1293299878}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: Thrust
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8d7859ec-8dd0-4bf0-995d-1818e5daec55
+    m_ActionName: Main Map/Thrust[/Keyboard/w,/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ac1c5a80-eb79-4e95-9e2f-077fbc7fcce5
+    m_ActionName: Main Map/Restart[/Keyboard/r]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Main Map
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1439376586
 GameObject:
   m_ObjectHideFlags: 3

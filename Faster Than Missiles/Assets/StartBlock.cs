@@ -20,6 +20,6 @@ public class StartBlock : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("entered");
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadSceneAsync("Level1");
     }
 }

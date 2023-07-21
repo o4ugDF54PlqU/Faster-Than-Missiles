@@ -23,7 +23,7 @@ public class Restarter : MonoBehaviour
     {
         if (context.action.IsPressed())
         {
-            SceneManager.LoadScene("Level1");
+            SceneManager.LoadSceneAsync("Level1");
         }
     }
 }
