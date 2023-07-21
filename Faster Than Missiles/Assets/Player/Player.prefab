@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5994615911221650044}
   - component: {fileID: 1201506318861942486}
-  - component: {fileID: 1792507695591657470}
   - component: {fileID: 4839857874664499405}
   - component: {fileID: 5764347049502895559}
   - component: {fileID: 5804715119216125718}
+  - component: {fileID: 8853279091673793655}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -91,88 +91,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1792507695591657470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 953097868125957947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: dfe57ea752f12e144bdfd38b8d93a214, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4839857874664499405}
-        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
-        m_MethodName: TurnLeft
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: c21cd4e1-1f52-4aa1-a5e1-2bf28ee88b6f
-    m_ActionName: Main Map/Turn Left[/Keyboard/a,/Keyboard/leftArrow]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4839857874664499405}
-        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
-        m_MethodName: TurnRight
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 76d47721-92f4-426e-9256-79f68fec0d18
-    m_ActionName: Main Map/Turn Right[/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 9d3f0560-7d22-4de0-a3ec-8b95be82d0e9
-    m_ActionName: Main Map/Fire[/Keyboard/space,/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4839857874664499405}
-        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
-        m_MethodName: Thrust
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 8d7859ec-8dd0-4bf0-995d-1818e5daec55
-    m_ActionName: Main Map/Thrust[/Keyboard/w,/Mouse/leftButton]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Main Map
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &4839857874664499405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,12 +104,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrusting: 0
-  rotationSpeed: 360
-  drag: 1
+  rotationSpeed: 1080
+  drag: 2
   angularDrag: 100
   thrustForce: 1000
   maxVelocity: 20
-  maxAngularVelocity: 300
+  maxAngularVelocity: 500
 --- !u!50 &5764347049502895559
 Rigidbody2D:
   serializedVersion: 4
@@ -241,6 +159,58 @@ MonoBehaviour:
   - {fileID: 1483655130, guid: 7651098a9c562ec47a3263a093e28dfd, type: 3}
   spineRenderer: {fileID: 3714966660040812418}
   thrustRenderer: {fileID: 3395017879377506431}
+--- !u!60 &8853279091673793655
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953097868125957947}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.4, y: 0.48}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.03, y: 0.17999999}
+      - {x: -0.17, y: -0.049999997}
+      - {x: -0.17, y: -0.16}
+      - {x: -0.16, y: -0.17999999}
+      - {x: 0.17, y: -0.17999999}
+      - {x: 0.17, y: -0.06}
+      - {x: 0.03, y: 0.17999999}
+  m_UseDelaunayMesh: 0
 --- !u!1 &1463277877529478513
 GameObject:
   m_ObjectHideFlags: 0

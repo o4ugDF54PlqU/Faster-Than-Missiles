@@ -44,18 +44,15 @@ public class MissileBehavior : MonoBehaviour
             fuelTime -= 1f * Time.deltaTime; 
             return;
         }
-        if (player)
-        {
-            playerPos = player.transform.position;
-            var thrust = Random.Range(thrustForce * 0.5f, thrustForce * 1.5f);
-            missileRigidBody.AddForce(transform.up * thrust * Time.deltaTime);
+        playerPos = player.transform.position;
+        var thrust = Random.Range(thrustForce * 0.5f, thrustForce * 1.5f);
+        missileRigidBody.AddForce(transform.up * thrust * Time.deltaTime);
 
-            Vector2 direction = playerPos - transform.position;
-            float angle = Vector2.SignedAngle(Vector2.up, direction);
-            Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
-            missileRigidBody.MoveRotation(Quaternion.RotateTowards(
-                transform.rotation, targetRotation, rotationSpeed * Time.deltaTime));
-        }
+        Vector2 direction = playerPos - transform.position;
+        float angle = Vector2.SignedAngle(Vector2.up, direction);
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        missileRigidBody.MoveRotation(Quaternion.RotateTowards(
+            transform.rotation, targetRotation, rotationSpeed * Time.deltaTime));
     }
 
     void FixedUpdate()
@@ -89,7 +86,7 @@ public class MissileBehavior : MonoBehaviour
         if (collision.gameObject == player)
         {
             cameraFollowGroup.RemoveMember(transform);
-            Destroy(collision.gameObject);
+            player.SetActive(false);
         }
 
 
