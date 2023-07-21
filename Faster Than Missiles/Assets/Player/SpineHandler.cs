@@ -49,6 +49,6 @@ public class SpineHandler : MonoBehaviour
         {
             thrustRenderer.sprite = thrustSprites[0];
         }
-        Debug.Log(forwardVelocity);
+        // Debug.Log(forwardVelocity);
     }
 }
