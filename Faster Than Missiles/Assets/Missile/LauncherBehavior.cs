@@ -14,6 +14,7 @@ public class LauncherBehavior : MonoBehaviour
     private Quaternion targeetRotation;
     [SerializeField] private GameObject player;
     [SerializeField] private float rotationSpeed = 90f;
+    [SerializeField] private AudioClip launchSound;
 
     [SerializeField] private float initialVolleyDelay = 5f;
     [SerializeField] private float subsequentVolleyDelay = 10f;
@@ -68,6 +69,7 @@ public class LauncherBehavior : MonoBehaviour
             missile.transform.position = transform.position;
             missile.transform.rotation = transform.rotation;
             missile.SetActive(true);
+            AudioSource.PlayClipAtPoint(launchSound, transform.position);
         }
 
         volleyCount--;

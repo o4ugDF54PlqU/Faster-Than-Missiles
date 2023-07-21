@@ -9,6 +9,7 @@ public class MissileBehavior : MonoBehaviour
     public GameObject player;
     public Cinemachine.CinemachineTargetGroup cameraFollowGroup;
     private Vector3 playerPos;
+    [SerializeField] private AudioClip boomSound;
     [Space]
 
     private Rigidbody2D missileRigidBody;
@@ -94,6 +95,8 @@ public class MissileBehavior : MonoBehaviour
         {
             return;
         }
+
+        AudioSource.PlayClipAtPoint(boomSound, transform.position);
         gameObject.SetActive(false);
     }
 }
