@@ -9,20 +9,30 @@ public class SpineHandler : MonoBehaviour
     public SpriteRenderer spineRenderer;
     public SpriteRenderer thrustRenderer;
     private Movement m;
+    private FrickinLaserBeam l;
     private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
         m = GetComponent<Movement>();
         rb = GetComponent<Rigidbody2D>();
+        l = GetComponent<FrickinLaserBeam>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (m.thrusting)
+        if (m.thrusting && l.firing)
+        {
+            spineRenderer.sprite = spineSprites[2];
+        }
+        else if (m.thrusting)
         {
             spineRenderer.sprite = spineSprites[1];
+        }
+        else if (l.firing)
+        {
+            spineRenderer.sprite = spineSprites[0];
         }
         else
         {

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Missile
+  - Launcher
   layers:
   - Default
   - TransparentFX
