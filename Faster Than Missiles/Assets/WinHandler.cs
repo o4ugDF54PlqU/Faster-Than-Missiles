@@ -1,19 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
-using Unity.PlasticSCM.Editor.WebApi;
 
 public class WinHandler : MonoBehaviour
 {
     private bool active = true;
     private bool danger;
+    public bool loadNext = false;
 
     public TMP_Text win_text;
     public TMP_Text threat_text;
 
     private int currentThreats;
     private int maxThreats;
+    private float time = 3f;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,10 +33,17 @@ public class WinHandler : MonoBehaviour
     {
         danger = (GameObject.FindWithTag("Launcher") != null);
 
-        if (!danger && active) 
+        if (!danger && active)
         {
-            active = false;
-            win_text.text = "WIN!";
+            if (loadNext)
+            {
+                SceneManager.LoadScene("Level2");
+            }
+            else
+            {
+                active = false;
+                win_text.text = "WIN!";
+            }
         } else
         {
             currentThreats = GameObject.FindGameObjectsWithTag("Launcher").Length;
