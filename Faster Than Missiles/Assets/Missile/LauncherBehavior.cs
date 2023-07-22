@@ -32,7 +32,7 @@ public class LauncherBehavior : MonoBehaviour
 
     void Update()
     {
-        if (!player)
+        if (!player.activeInHierarchy)
         {
             return;
         }

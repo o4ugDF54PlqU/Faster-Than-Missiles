@@ -41,6 +41,12 @@ public class MissileBehavior : MonoBehaviour
 
     void Update()
     {
+        if (!player.activeInHierarchy)
+        {
+            gameObject.SetActive(false);
+            cameraFollowGroup.RemoveMember(transform);
+        }
+
         if (fuelTimeCurrent >= 0)
         {
             fuelTimeCurrent -= 1f * Time.deltaTime; 
