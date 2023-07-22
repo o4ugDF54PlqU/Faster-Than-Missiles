@@ -7,6 +7,7 @@ public class FrickinLaserBeam : MonoBehaviour
 {
     public bool firing = false;
     public float laserOffset = 0.5f;
+    public AudioSource audioSource;
     private LineRenderer lr;
     private Collider2D col;
     // Start is called before the first frame update
@@ -47,10 +48,14 @@ public class FrickinLaserBeam : MonoBehaviour
     {
         if (context.action.IsPressed())
         {
+            audioSource.Play();
+            audioSource.loop = true;
             firing = true;
         }
         else
         {
+            audioSource.Stop();
+            audioSource.loop = false;
             firing = false;
         }
     }
