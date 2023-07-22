@@ -266,6 +266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 953097868125957947, guid: 63f16039dd533f54c95b9a5dc511ff71, type: 3}
   cameraFollowGroup: {fileID: 0}
+  boomSound: {fileID: 8300000, guid: 41ec5477de032cf49a7c7717ee08d0fa, type: 3}
   initialThrust: 300
   thrustForce: 1000
   maxVelocity: 20
@@ -275,6 +276,7 @@ MonoBehaviour:
   activeAngularDrag: 0.01
   fuelTime: 1.5
   rotationSpeed: 2200
+  cameraGroupWeight: 1
 --- !u!70 &4953076513702800202
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
