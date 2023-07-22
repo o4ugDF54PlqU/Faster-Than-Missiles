@@ -6,7 +6,7 @@ public class RestartButton : MonoBehaviour
 {
     public Cinemachine.CinemachineTargetGroup targetGroup;
     private GameObject player;
-    private bool appear;
+    private bool appear = false;
     // Start is called before the first frame update
     void Start()
     {
