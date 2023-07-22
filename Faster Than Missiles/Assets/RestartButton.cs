@@ -8,7 +8,7 @@ public class RestartButton : MonoBehaviour
     private GameObject player;
     private bool appear = false;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         LeanTween.alpha(gameObject, 0f, 0f);
 
