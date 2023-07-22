@@ -18,13 +18,16 @@ public class LauncherBehavior : MonoBehaviour
 
     [SerializeField] private float initialVolleyDelay = 5f;
     [SerializeField] private float subsequentVolleyDelay = 10f;
+    [SerializeField] private float activationDistance = 10f;
     [SerializeField, Tooltip("Number of missiles fired per volley.")] private int missileCount = 1;
     [SerializeField, Tooltip("Time delay (in seconds) between shots in a volley.")] private float burstDelayRate = 2f;
 
     void Start()
     {
         volleyDelay = initialVolleyDelay;
+        volleyCount = missileCount;
         launcherRigidBody = GetComponent<Rigidbody2D>();
+        player = GameObject.Find("Player");
     }
 
     void Update()
@@ -40,24 +43,30 @@ public class LauncherBehavior : MonoBehaviour
         launcherRigidBody.MoveRotation(Quaternion.RotateTowards(
             transform.rotation, targetRotation, rotationSpeed * Time.deltaTime));
 
+        if (Vector2.Distance(playerPos, transform.position) > activationDistance)
+        {
+            return;
+        }
+
         if (volleyDelay > 0)
+        {
             volleyDelay -= Time.deltaTime;
-        else
+            return;
+        }
+
+        if (volleyCount <= 0)
         {
             volleyCount = missileCount;
-            burstDelay = burstDelayRate;
-            while (volleyCount > 0)
-            {
-                LaunchMissile();
-                if (burstDelay > 0)
-                    burstDelay -= Time.deltaTime;
-                else
-                {
-                    LaunchMissile();
-                    burstDelay = burstDelayRate;
-                }
-            }
             volleyDelay = subsequentVolleyDelay;
+            return;
+        }
+
+        if (burstDelay > 0)
+            burstDelay -= Time.deltaTime;
+        else
+        {
+            LaunchMissile();
+            burstDelay = burstDelayRate;
         }
     }
 
@@ -66,7 +75,7 @@ public class LauncherBehavior : MonoBehaviour
         GameObject missile = ObjectPool.SharedInstance.GetPooledObject();
         if (missile != null)
         {
-            missile.transform.position = transform.position + transform.up * 1.5f;
+            missile.transform.position = transform.position + transform.up * 2f;
             missile.transform.rotation = transform.rotation;
             missile.SetActive(true);
             MissileBehavior mb = missile.GetComponent<MissileBehavior>();
