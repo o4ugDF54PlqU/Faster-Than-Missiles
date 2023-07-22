@@ -22,6 +22,7 @@ public class MissileBehavior : MonoBehaviour
     [SerializeField] private float passiveAngularDrag = 100;
     [SerializeField] private float activeAngularDrag = 0.01f;
     [SerializeField] private float fuelTime = 1.5f;
+    private float fuelTimeCurrent = 1.5f;
     [SerializeField] private float rotationSpeed = 180f;
     [SerializeField] private float cameraGroupWeight = 1f;
     private Quaternion toRotation;
@@ -40,9 +41,9 @@ public class MissileBehavior : MonoBehaviour
 
     void Update()
     {
-        if (fuelTime >= 0)
+        if (fuelTimeCurrent >= 0)
         {
-            fuelTime -= 1f * Time.deltaTime; 
+            fuelTimeCurrent -= 1f * Time.deltaTime; 
             return;
         }
         playerPos = player.transform.position;
@@ -80,6 +81,16 @@ public class MissileBehavior : MonoBehaviour
         //     missileRigidBody.angularDrag = passiveAngularDrag;
         // }
 
+    }
+
+    public void refuel()
+    {
+        if (fuelTimeCurrent > 0)
+        {
+            return;
+        }
+        missileRigidBody.AddForce(transform.up * initialThrust);
+        fuelTimeCurrent = fuelTime;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

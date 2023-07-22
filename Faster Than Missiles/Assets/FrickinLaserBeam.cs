@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class FrickinLaserBeam : MonoBehaviour
 {
     public bool firing = false;
+    public float laserOffset = 0.5f;
     private LineRenderer lr;
     private Collider2D col;
     // Start is called before the first frame update
@@ -38,7 +39,7 @@ public class FrickinLaserBeam : MonoBehaviour
                 Destroy(item.collider.gameObject);
             }
         }
-        lr.SetPosition(1, lr.transform.position + transform.up * 2f);
+        lr.SetPosition(1, lr.transform.position + transform.up * laserOffset);
         lr.enabled = true;
     }
 

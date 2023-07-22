@@ -66,9 +66,11 @@ public class LauncherBehavior : MonoBehaviour
         GameObject missile = ObjectPool.SharedInstance.GetPooledObject();
         if (missile != null)
         {
-            missile.transform.position = transform.position;
+            missile.transform.position = transform.position + transform.up * 1.5f;
             missile.transform.rotation = transform.rotation;
             missile.SetActive(true);
+            MissileBehavior mb = missile.GetComponent<MissileBehavior>();
+            mb.refuel();
             AudioSource.PlayClipAtPoint(launchSound, transform.position);
         }
 
