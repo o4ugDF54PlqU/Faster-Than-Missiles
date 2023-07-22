@@ -97,7 +97,6 @@ public class MissileBehavior : MonoBehaviour
     {
         if (collision.gameObject == player)
         {
-            cameraFollowGroup.RemoveMember(transform);
             player.SetActive(false);
         }
 
@@ -109,5 +108,6 @@ public class MissileBehavior : MonoBehaviour
 
         AudioSource.PlayClipAtPoint(boomSound, transform.position);
         gameObject.SetActive(false);
+        cameraFollowGroup.RemoveMember(transform);
     }
 }
