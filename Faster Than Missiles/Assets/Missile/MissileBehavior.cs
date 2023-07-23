@@ -41,11 +41,11 @@ public class MissileBehavior : MonoBehaviour
 
     void Update()
     {
-        if (!player.activeInHierarchy)
-        {
-            gameObject.SetActive(false);
-            cameraFollowGroup.RemoveMember(transform);
-        }
+        // if (!player.activeInHierarchy)
+        // {
+        //     gameObject.SetActive(false);
+        //     cameraFollowGroup.RemoveMember(transform);
+        // }
 
         if (fuelTimeCurrent >= 0)
         {

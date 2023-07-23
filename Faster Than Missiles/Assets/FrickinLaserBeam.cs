@@ -18,7 +18,7 @@ public class FrickinLaserBeam : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!firing)
         {
